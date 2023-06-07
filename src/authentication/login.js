@@ -1,7 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
+
+    const navigate = useNavigate()
 
 const handleLogin=(event)=>{
   event.preventDefault()
@@ -27,6 +29,7 @@ const handleLogin=(event)=>{
         alert(data?.massage)
         const token = data?.data?.token
         localStorage.setItem("token",token)
+        navigate("/profile")
     }
   })
   
