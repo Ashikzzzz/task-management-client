@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { CONTEXT } from '../../context/MainContext'
 
 const CreateTask = () => {
     const navigate = useNavigate()
+    const {user} = useContext(CONTEXT)
+    // console.log(user)
 
 const handleTaskForm=(e)=>{
 e.preventDefault()
@@ -11,14 +14,17 @@ const title = form.title.value;
 const text= form.text.value;
 const duedate = form.date.value;
 const status = form.status.value
-
+const email = form.assignedUser.value
 
 const taskData= {
     title,
     description:text,
     due_date:duedate,
-    status
+    status,
+    email
 }
+
+console.log(taskData)
 fetch("http://localhost:5000/api/task/create-task",{
     method: "POST",
     headers: {
@@ -45,6 +51,9 @@ fetch("http://localhost:5000/api/task/create-task",{
        <form onSubmit={handleTaskForm}>
        <div>
         <input name='title' type="text" placeholder="Title" className="input input-bordered input-primary w-full max-w-xs" />
+        </div>
+       <div>
+        <input name='assignedUser' type="email" placeholder="Write an assigned user email" className="input input-bordered input-primary w-full max-w-xs mt-4" />
         </div>
         <div>
         <textarea name='text' className="textarea textarea-primary mt-4" placeholder="Description"></textarea>

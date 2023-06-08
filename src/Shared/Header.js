@@ -23,10 +23,14 @@ const handleLogOut=()=>{
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
 
             {
-                user?.role==="admin" ? 
+                user?.role==="admin" &&
                 <li><Link to="/dashboard/create-task">Create-Task</Link></li>
-                :
-              <></>
+              
+            }
+            {
+                user?.role==="user" &&
+                <li><Link to="/dashboard/allTask">See-tasks</Link></li>
+              
             }
 
         {
@@ -53,10 +57,13 @@ const handleLogOut=()=>{
 
         
     {
-                user?.role==="admin" ? 
-                <li><Link to="/dashboard/create-task">Create-Task</Link></li>
-                :
-               <></>
+                user?.role==="admin" &&
+                <li><Link to="/dashboard/create-task">Create-Task</Link></li>              
+                
+            }
+            {
+               user?.role==="user" &&
+               <li><Link to="/dashboard/individual-task">See-tasks</Link></li>
             }
 
 

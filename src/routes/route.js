@@ -8,6 +8,8 @@ import ManageUser from "../components/ManageUser/ManageUser";
 import CreateTask from "../Dashboard/CreateTask/CreateTask";
 import DashboardLayout from "../layouts/DashboardLayout";
 import SeeAllTask from "../Dashboard/SeeAllTask/SeeAllTask";
+import EditTask from "../Dashboard/EditTask/EditTask";
+import IndividualTask from "../Dashboard/IndividualTask/IndividualTask";
 
 // import ManageUser from "../components/Profile/ManageUser";
 
@@ -42,7 +44,7 @@ export const router = createBrowserRouter([
         ]
     },
     {
-        path:"/dashboard",
+        path:"/",
         element: <DashboardLayout></DashboardLayout>,
         children: [
             {
@@ -52,7 +54,16 @@ export const router = createBrowserRouter([
             {
                 path: "/dashboard/allTask",
                 element: <SeeAllTask></SeeAllTask>
-            }
+            },
+            {
+                path: "/dashboard/editTask/:id",
+                element: <EditTask></EditTask>,
+                loader: async ({ params }) => fetch(`http://localhost:5000/api/task/get-task/${params.id}`),
+            },
+            {
+                path: "/dashboard/individual-task",
+                element: <IndividualTask></IndividualTask>
+            },
         ]
         
     }
