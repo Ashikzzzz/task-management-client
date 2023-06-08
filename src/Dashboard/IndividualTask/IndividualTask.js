@@ -23,22 +23,13 @@ useEffect(()=>{
 },[user?.email])
 
 
-// const { data: tasks } = useQuery({
-//     queryKey: ['tasks'],
-//     queryFn: async () => {
-//   try {
-//     const res = await fetch(`http://localhost:5000/api/task/get-a-task/email?email=${user?.email}`);
-//     const data = await res.json();
-//             return data;
-//   } catch (err) {
-//     console.error(err);
-//   }
-//   },
-//   })
 
 // console.log(tasks?.data)
   return (
-    <div className='grid grid-cols-3'>
+   <div>
+      <h2 className='text-3xl font-bold'>You have {tasks.length} tasks</h2>
+     <div className='grid grid-cols-3'>
+    
       {
         tasks?.map(task=>{
             return  <div className="card w-96 bg-base-100 shadow-xl">
@@ -66,6 +57,7 @@ useEffect(()=>{
         })
       }
     </div>
+   </div>
   )
 }
 

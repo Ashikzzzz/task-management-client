@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 const ManageUser = () => {
     const navigate=useNavigate()
     const {user}=useContext(CONTEXT)
-    
+    const {name}=user
 
         const handleManageProfile=(e)=>{
             e.preventDefault()
@@ -39,7 +39,7 @@ const ManageUser = () => {
 
        <form onSubmit={handleManageProfile}>
        <div>
-        <input name="name" type="text" placeholder="Type here " defaultValue={user?.name} className="input input-bordered w-full max-w-xs mt-4" />
+        <input name="name" type="text" placeholder="Type here " defaultValue={name} className="input input-bordered w-full max-w-xs mt-4" />
         </div>
         <button type='submit' className="text-sm mt-6  w-1/2 mx-auto max-w-xs border-b-2  btn btn-primary ">
                     <Link>Submit</Link>
